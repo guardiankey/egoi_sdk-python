@@ -10,9 +10,9 @@ dict, frozendict.frozendict,  | frozendict.frozendict,  | Contact import bulk re
 ### Dictionary Keys
 Key | Input Type | Accessed Type | Description | Notes
 ------------ | ------------- | ------------- | ------------- | -------------
-**mode** | str,  | str,  | Add new contacts only (&#x27;add&#x27;) or add and replace existing ones (&#x27;update&#x27;) | must be one of ["add", "update", ] 
+**mode** | str,  | str,  | Add new contacts only (&#x27;add&#x27;), add and replace existing ones (&#x27;update&#x27;) or only replace existing ones (&#x27;update_only&#x27;) | must be one of ["add", "update", "update_only", ] 
 **[file](#file)** | dict, frozendict.frozendict,  | frozendict.frozendict,  | File to import | 
-**compare_field** | str,  | str,  | Field ID which will be mapped for comparison to prevent duplicates) | 
+**compare_field** | str,  | str,  | Field ID which will be mapped for comparison to prevent duplicates. Field must be set as unique in E-goi. | 
 **force_empty** | bool,  | BoolClass,  | If &#x27;true&#x27; accepts empty values and erases those fields | [optional] if omitted the server will use the default value of False
 **[notify](#notify)** | list, tuple,  | tuple,  | Array of IDs of the users to notify | [optional] 
 **callback_url** | str,  | str,  | Url to receive the report &lt;a href&#x3D;&#x27;/usecases/callbacks/#import-collection-of-contacts&#x27; target&#x3D;&#x27;_blank&#x27;&gt;[Go to callback documentation]&lt;/a&gt; | [optional] 

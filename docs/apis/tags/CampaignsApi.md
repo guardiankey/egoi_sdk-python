@@ -284,7 +284,7 @@ with egoi_api.ApiClient(configuration) as api_client:
         'schedule_date_min': "1970-01-01T00:00:00.00Z",
         'schedule_date_max': "1970-01-01T00:00:00.00Z",
         'offset': 0,
-        'limit': 10,
+        'limit': 100,
         'order': "desc",
         'order_by': "created",
     }
@@ -486,7 +486,7 @@ decimal.Decimal, int,  | decimal.Decimal,  |  |
 ## Model Type Info
 Input Type | Accessed Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-decimal.Decimal, int,  | decimal.Decimal,  |  | if omitted the server will use the default value of 10
+decimal.Decimal, int,  | decimal.Decimal,  |  | if omitted the server will use the default value of 100
 
 # OrderSchema
 

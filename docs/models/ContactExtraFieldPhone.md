@@ -10,7 +10,7 @@ Key | Input Type | Accessed Type | Description | Notes
 ------------ | ------------- | ------------- | ------------- | -------------
 **field_id** | [**QueryId**](QueryId.md) | [**QueryId**](QueryId.md) |  | [optional] 
 **format** | str,  | str,  | Extra field format | [optional] must be one of ["phone", ] 
-**value** | str,  | str,  | Extra field value | [optional] 
+**value** | str,  | str,  | Phone value (country code followed by phone number, split by &#x27;-&#x27;) | [optional] 
 **status** | str,  | str,  | Extra field status | [optional] must be one of ["active", "inactive", ] 
 **any_string_name** | dict, frozendict.frozendict, str, date, datetime, int, float, bool, decimal.Decimal, None, list, tuple, bytes, io.FileIO, io.BufferedReader | frozendict.frozendict, str, BoolClass, decimal.Decimal, NoneClass, tuple, bytes, FileIO | any string name can be used but the value must be the correct type | [optional]
 

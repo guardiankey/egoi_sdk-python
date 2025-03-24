@@ -15,8 +15,8 @@ Key | Input Type | Accessed Type | Description | Notes
 **birth_date** | str, date,  | str,  | Birth date of the contact | [optional] value must conform to RFC-3339 full-date YYYY-MM-DD
 **language** | [**Language**](Language.md) | [**Language**](Language.md) |  | [optional] 
 **email** | str,  | str,  | Email of the contact | [optional] 
-**cellphone** | str,  | str,  | Cellphone of the contact | [optional] 
-**phone** | str,  | str,  | Phone of the contact | [optional] 
+**cellphone** | str,  | str,  | Cellphone of the contact (country code followed by phone number, split by &#x27;-&#x27;) | [optional] 
+**phone** | str,  | str,  | Phone of the contact (country code followed by phone number, split by &#x27;-&#x27;) | [optional] 
 **[push_token_android](#push_token_android)** | list, tuple,  | tuple,  | Android push token of the contact | [optional] 
 **[push_token_ios](#push_token_ios)** | list, tuple,  | tuple,  | IOS push token of the contact | [optional] 
 **any_string_name** | dict, frozendict.frozendict, str, date, datetime, int, float, bool, decimal.Decimal, None, list, tuple, bytes, io.FileIO, io.BufferedReader | frozendict.frozendict, str, BoolClass, decimal.Decimal, NoneClass, tuple, bytes, FileIO | any string name can be used but the value must be the correct type | [optional]

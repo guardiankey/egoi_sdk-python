@@ -10,7 +10,6 @@ from egoi_api.apis.tags.campaigns_api import CampaignsApi
 from egoi_api.apis.tags.connected_sites_api import ConnectedSitesApi
 from egoi_api.apis.tags.contacts_api import ContactsApi
 from egoi_api.apis.tags.ecommerce_api import EcommerceApi
-from egoi_api.apis.tags.ecommerce_activity_api import EcommerceActivityApi
 from egoi_api.apis.tags.email_api import EmailApi
 from egoi_api.apis.tags.fields_api import FieldsApi
 from egoi_api.apis.tags.lists_api import ListsApi
@@ -43,7 +42,6 @@ TagToApi = typing_extensions.TypedDict(
         TagValues.CONNECTED_SITES: ConnectedSitesApi,
         TagValues.CONTACTS: ContactsApi,
         TagValues.ECOMMERCE: EcommerceApi,
-        TagValues.ECOMMERCE_ACTIVITY: EcommerceActivityApi,
         TagValues.EMAIL: EmailApi,
         TagValues.FIELDS: FieldsApi,
         TagValues.LISTS: ListsApi,
@@ -77,7 +75,6 @@ tag_to_api = TagToApi(
         TagValues.CONNECTED_SITES: ConnectedSitesApi,
         TagValues.CONTACTS: ContactsApi,
         TagValues.ECOMMERCE: EcommerceApi,
-        TagValues.ECOMMERCE_ACTIVITY: EcommerceActivityApi,
         TagValues.EMAIL: EmailApi,
         TagValues.FIELDS: FieldsApi,
         TagValues.LISTS: ListsApi,

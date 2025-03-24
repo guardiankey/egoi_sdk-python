@@ -34,9 +34,9 @@ Key | Input Type | Accessed Type | Description | Notes
 **language** | [**Language**](Language.md) | [**Language**](Language.md) |  | [optional] 
 **email** | str,  | str,  | Email of the contact | [optional] 
 **email_status** | str,  | str,  | Email channel status | [optional] must be one of ["active", "inactive", ] 
-**cellphone** | str,  | str,  | Cellphone of the contact | [optional] 
+**cellphone** | str,  | str,  | Cellphone of the contact (country code followed by phone number, split by &#x27;-&#x27;) | [optional] 
 **cellphone_status** | str,  | str,  | Cellphone channel status | [optional] must be one of ["active", "inactive", ] 
-**phone** | str,  | str,  | Phone of the contact | [optional] 
+**phone** | str,  | str,  | Phone of the contact (country code followed by phone number, split by &#x27;-&#x27;) | [optional] 
 **phone_status** | str,  | str,  | Phone channel status | [optional] must be one of ["active", "inactive", ] 
 **any_string_name** | dict, frozendict.frozendict, str, date, datetime, int, float, bool, decimal.Decimal, None, list, tuple, bytes, io.FileIO, io.BufferedReader | frozendict.frozendict, str, BoolClass, decimal.Decimal, NoneClass, tuple, bytes, FileIO | any string name can be used but the value must be the correct type | [optional]
 

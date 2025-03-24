@@ -25,7 +25,7 @@ dict, frozendict.frozendict,  | frozendict.frozendict,  |  |
 Key | Input Type | Accessed Type | Description | Notes
 ------------ | ------------- | ------------- | ------------- | -------------
 **[categories](#categories)** | list, tuple,  | tuple,  | Array of product categories, using the character &#x27;&gt;&#x27; as delimiter for the breadcrumb                                 syntax | [optional] 
-**[related_products](#related_products)** | list, tuple,  | tuple,  | Related products | [optional] 
+**[related_products](#related_products)** | list, tuple,  | tuple,  | Related products, array of &#x27;product_identifier&#x27; | [optional] 
 **[custom_attributes](#custom_attributes)** | list, tuple,  | tuple,  | Custom attributes | [optional] 
 **any_string_name** | dict, frozendict.frozendict, str, date, datetime, int, float, bool, decimal.Decimal, None, list, tuple, bytes, io.FileIO, io.BufferedReader | frozendict.frozendict, str, BoolClass, decimal.Decimal, NoneClass, tuple, bytes, FileIO | any string name can be used but the value must be the correct type | [optional]
 
@@ -45,12 +45,12 @@ items | str,  | str,  |  |
 
 # related_products
 
-Related products
+Related products, array of 'product_identifier'
 
 ## Model Type Info
 Input Type | Accessed Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-list, tuple,  | tuple,  | Related products | 
+list, tuple,  | tuple,  | Related products, array of &#x27;product_identifier&#x27; | 
 
 ### Tuple Items
 Class Name | Input Type | Accessed Type | Description | Notes

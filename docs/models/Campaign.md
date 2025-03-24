@@ -10,6 +10,7 @@ dict, frozendict.frozendict,  | frozendict.frozendict,  | Campaign schema |
 ### Dictionary Keys
 Key | Input Type | Accessed Type | Description | Notes
 ------------ | ------------- | ------------- | ------------- | -------------
+**id** | [**Id**](Id.md) | [**Id**](Id.md) |  | [optional] 
 **campaign_hash** | [**Hash**](Hash.md) | [**Hash**](Hash.md) |  | [optional] 
 **status** | str,  | str,  | Status of the campaign | [optional] must be one of ["draft", "canceled", "queued", "paused", "sending", "sent", ] 
 **thumbnail** | str,  | str,  | Thumbnail of the campaign | [optional] 
@@ -24,6 +25,8 @@ Key | Input Type | Accessed Type | Description | Notes
 **[start_date](#start_date)** | dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, bool, None, list, tuple, bytes, io.FileIO, io.BufferedReader,  | frozendict.frozendict, str, decimal.Decimal, BoolClass, NoneClass, tuple, bytes, FileIO |  | [optional] 
 **[end_date](#end_date)** | dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, bool, None, list, tuple, bytes, io.FileIO, io.BufferedReader,  | frozendict.frozendict, str, decimal.Decimal, BoolClass, NoneClass, tuple, bytes, FileIO |  | [optional] 
 **[schedule_date](#schedule_date)** | dict, frozendict.frozendict,  | frozendict.frozendict,  |  | [optional] 
+**processed_messages** | decimal.Decimal, int,  | decimal.Decimal,  | Total number of processed messages | [optional] 
+**automation_id** | decimal.Decimal, int,  | decimal.Decimal,  | The automation id of the campaign | [optional] 
 **any_string_name** | dict, frozendict.frozendict, str, date, datetime, int, float, bool, decimal.Decimal, None, list, tuple, bytes, io.FileIO, io.BufferedReader | frozendict.frozendict, str, BoolClass, decimal.Decimal, NoneClass, tuple, bytes, FileIO | any string name can be used but the value must be the correct type | [optional]
 
 # created

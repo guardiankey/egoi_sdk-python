@@ -1,6 +1,7 @@
 import typing_extensions
 
 from egoi_api.paths import PathValues
+from egoi_api.apis.paths.automations_automation_id_actions import AutomationsAutomationIdActions
 from egoi_api.apis.paths.automations import Automations
 from egoi_api.apis.paths.automations_automation_id import AutomationsAutomationId
 from egoi_api.apis.paths.campaigns import Campaigns
@@ -42,6 +43,7 @@ from egoi_api.apis.paths.lists_list_id_contacts_actions_unsubscribe import Lists
 from egoi_api.apis.paths.lists_list_id_contacts_actions_start_automation import ListsListIdContactsActionsStartAutomation
 from egoi_api.apis.paths.lists_list_id_contacts_actions_update import ListsListIdContactsActionsUpdate
 from egoi_api.apis.paths.lists_list_id_contacts_contact_id_activities import ListsListIdContactsContactIdActivities
+from egoi_api.apis.paths.lists_list_id_contacts_by_field import ListsListIdContactsByField
 from egoi_api.apis.paths.lists_list_id_contacts import ListsListIdContacts
 from egoi_api.apis.paths.lists_list_id_contacts_contact_id import ListsListIdContactsContactId
 from egoi_api.apis.paths.contacts_search import ContactsSearch
@@ -76,6 +78,8 @@ from egoi_api.apis.paths.push_apps import PushApps
 from egoi_api.apis.paths.push_apps_app_id import PushAppsAppId
 from egoi_api.apis.paths.push_apps_app_id_event import PushAppsAppIdEvent
 from egoi_api.apis.paths.push_apps_app_id_token import PushAppsAppIdToken
+from egoi_api.apis.paths.reports_advanced_model import ReportsAdvancedModel
+from egoi_api.apis.paths.reports_advanced_contact_activity import ReportsAdvancedContactActivity
 from egoi_api.apis.paths.reports_advanced import ReportsAdvanced
 from egoi_api.apis.paths.reports_advanced_email_bounces import ReportsAdvancedEmailBounces
 from egoi_api.apis.paths.reports_advanced_email_clicks_by_contact import ReportsAdvancedEmailClicksByContact
@@ -83,12 +87,14 @@ from egoi_api.apis.paths.reports_advanced_email_clicks_by_url import ReportsAdva
 from egoi_api.apis.paths.reports_advanced_email_events import ReportsAdvancedEmailEvents
 from egoi_api.apis.paths.reports_advanced_email_unsubscriptions import ReportsAdvancedEmailUnsubscriptions
 from egoi_api.apis.paths.reports_advanced_form_answers import ReportsAdvancedFormAnswers
+from egoi_api.apis.paths.reports_advanced_models import ReportsAdvancedModels
 from egoi_api.apis.paths.reports_advanced_sends import ReportsAdvancedSends
 from egoi_api.apis.paths.reports_advanced_sms_bounces import ReportsAdvancedSmsBounces
 from egoi_api.apis.paths.reports_advanced_sms_events import ReportsAdvancedSmsEvents
 from egoi_api.apis.paths.reports_advanced_subscriptions import ReportsAdvancedSubscriptions
 from egoi_api.apis.paths.reports_advanced_unsubscriptions import ReportsAdvancedUnsubscriptions
 from egoi_api.apis.paths.reports_email_campaign_hash import ReportsEmailCampaignHash
+from egoi_api.apis.paths.reports_push_campaign_hash import ReportsPushCampaignHash
 from egoi_api.apis.paths.reports_sms_campaign_hash import ReportsSmsCampaignHash
 from egoi_api.apis.paths.reports_voice_campaign_hash import ReportsVoiceCampaignHash
 from egoi_api.apis.paths.reports_web_push_campaign_hash import ReportsWebPushCampaignHash
@@ -116,6 +122,7 @@ from egoi_api.apis.paths.webhooks_webhook_id import WebhooksWebhookId
 PathToApi = typing_extensions.TypedDict(
     'PathToApi',
     {
+        PathValues.AUTOMATIONS_AUTOMATION_ID_ACTIONS: AutomationsAutomationIdActions,
         PathValues.AUTOMATIONS: Automations,
         PathValues.AUTOMATIONS_AUTOMATION_ID: AutomationsAutomationId,
         PathValues.CAMPAIGNS: Campaigns,
@@ -157,6 +164,7 @@ PathToApi = typing_extensions.TypedDict(
         PathValues.LISTS_LIST_ID_CONTACTS_ACTIONS_STARTAUTOMATION: ListsListIdContactsActionsStartAutomation,
         PathValues.LISTS_LIST_ID_CONTACTS_ACTIONS_UPDATE: ListsListIdContactsActionsUpdate,
         PathValues.LISTS_LIST_ID_CONTACTS_CONTACT_ID_ACTIVITIES: ListsListIdContactsContactIdActivities,
+        PathValues.LISTS_LIST_ID_CONTACTS_BYFIELD: ListsListIdContactsByField,
         PathValues.LISTS_LIST_ID_CONTACTS: ListsListIdContacts,
         PathValues.LISTS_LIST_ID_CONTACTS_CONTACT_ID: ListsListIdContactsContactId,
         PathValues.CONTACTS_SEARCH: ContactsSearch,
@@ -191,6 +199,8 @@ PathToApi = typing_extensions.TypedDict(
         PathValues.PUSH_APPS_APP_ID: PushAppsAppId,
         PathValues.PUSH_APPS_APP_ID_EVENT: PushAppsAppIdEvent,
         PathValues.PUSH_APPS_APP_ID_TOKEN: PushAppsAppIdToken,
+        PathValues.REPORTS_ADVANCED_MODEL: ReportsAdvancedModel,
+        PathValues.REPORTS_ADVANCED_CONTACTACTIVITY: ReportsAdvancedContactActivity,
         PathValues.REPORTS_ADVANCED: ReportsAdvanced,
         PathValues.REPORTS_ADVANCED_EMAILBOUNCES: ReportsAdvancedEmailBounces,
         PathValues.REPORTS_ADVANCED_EMAILCLICKSBYCONTACT: ReportsAdvancedEmailClicksByContact,
@@ -198,12 +208,14 @@ PathToApi = typing_extensions.TypedDict(
         PathValues.REPORTS_ADVANCED_EMAILEVENTS: ReportsAdvancedEmailEvents,
         PathValues.REPORTS_ADVANCED_EMAILUNSUBSCRIPTIONS: ReportsAdvancedEmailUnsubscriptions,
         PathValues.REPORTS_ADVANCED_FORMANSWERS: ReportsAdvancedFormAnswers,
+        PathValues.REPORTS_ADVANCED_MODELS: ReportsAdvancedModels,
         PathValues.REPORTS_ADVANCED_SENDS: ReportsAdvancedSends,
         PathValues.REPORTS_ADVANCED_SMSBOUNCES: ReportsAdvancedSmsBounces,
         PathValues.REPORTS_ADVANCED_SMSEVENTS: ReportsAdvancedSmsEvents,
         PathValues.REPORTS_ADVANCED_SUBSCRIPTIONS: ReportsAdvancedSubscriptions,
         PathValues.REPORTS_ADVANCED_UNSUBSCRIPTIONS: ReportsAdvancedUnsubscriptions,
         PathValues.REPORTS_EMAIL_CAMPAIGN_HASH: ReportsEmailCampaignHash,
+        PathValues.REPORTS_PUSH_CAMPAIGN_HASH: ReportsPushCampaignHash,
         PathValues.REPORTS_SMS_CAMPAIGN_HASH: ReportsSmsCampaignHash,
         PathValues.REPORTS_VOICE_CAMPAIGN_HASH: ReportsVoiceCampaignHash,
         PathValues.REPORTS_WEBPUSH_CAMPAIGN_HASH: ReportsWebPushCampaignHash,
@@ -232,6 +244,7 @@ PathToApi = typing_extensions.TypedDict(
 
 path_to_api = PathToApi(
     {
+        PathValues.AUTOMATIONS_AUTOMATION_ID_ACTIONS: AutomationsAutomationIdActions,
         PathValues.AUTOMATIONS: Automations,
         PathValues.AUTOMATIONS_AUTOMATION_ID: AutomationsAutomationId,
         PathValues.CAMPAIGNS: Campaigns,
@@ -273,6 +286,7 @@ path_to_api = PathToApi(
         PathValues.LISTS_LIST_ID_CONTACTS_ACTIONS_STARTAUTOMATION: ListsListIdContactsActionsStartAutomation,
         PathValues.LISTS_LIST_ID_CONTACTS_ACTIONS_UPDATE: ListsListIdContactsActionsUpdate,
         PathValues.LISTS_LIST_ID_CONTACTS_CONTACT_ID_ACTIVITIES: ListsListIdContactsContactIdActivities,
+        PathValues.LISTS_LIST_ID_CONTACTS_BYFIELD: ListsListIdContactsByField,
         PathValues.LISTS_LIST_ID_CONTACTS: ListsListIdContacts,
         PathValues.LISTS_LIST_ID_CONTACTS_CONTACT_ID: ListsListIdContactsContactId,
         PathValues.CONTACTS_SEARCH: ContactsSearch,
@@ -307,6 +321,8 @@ path_to_api = PathToApi(
         PathValues.PUSH_APPS_APP_ID: PushAppsAppId,
         PathValues.PUSH_APPS_APP_ID_EVENT: PushAppsAppIdEvent,
         PathValues.PUSH_APPS_APP_ID_TOKEN: PushAppsAppIdToken,
+        PathValues.REPORTS_ADVANCED_MODEL: ReportsAdvancedModel,
+        PathValues.REPORTS_ADVANCED_CONTACTACTIVITY: ReportsAdvancedContactActivity,
         PathValues.REPORTS_ADVANCED: ReportsAdvanced,
         PathValues.REPORTS_ADVANCED_EMAILBOUNCES: ReportsAdvancedEmailBounces,
         PathValues.REPORTS_ADVANCED_EMAILCLICKSBYCONTACT: ReportsAdvancedEmailClicksByContact,
@@ -314,12 +330,14 @@ path_to_api = PathToApi(
         PathValues.REPORTS_ADVANCED_EMAILEVENTS: ReportsAdvancedEmailEvents,
         PathValues.REPORTS_ADVANCED_EMAILUNSUBSCRIPTIONS: ReportsAdvancedEmailUnsubscriptions,
         PathValues.REPORTS_ADVANCED_FORMANSWERS: ReportsAdvancedFormAnswers,
+        PathValues.REPORTS_ADVANCED_MODELS: ReportsAdvancedModels,
         PathValues.REPORTS_ADVANCED_SENDS: ReportsAdvancedSends,
         PathValues.REPORTS_ADVANCED_SMSBOUNCES: ReportsAdvancedSmsBounces,
         PathValues.REPORTS_ADVANCED_SMSEVENTS: ReportsAdvancedSmsEvents,
         PathValues.REPORTS_ADVANCED_SUBSCRIPTIONS: ReportsAdvancedSubscriptions,
         PathValues.REPORTS_ADVANCED_UNSUBSCRIPTIONS: ReportsAdvancedUnsubscriptions,
         PathValues.REPORTS_EMAIL_CAMPAIGN_HASH: ReportsEmailCampaignHash,
+        PathValues.REPORTS_PUSH_CAMPAIGN_HASH: ReportsPushCampaignHash,
         PathValues.REPORTS_SMS_CAMPAIGN_HASH: ReportsSmsCampaignHash,
         PathValues.REPORTS_VOICE_CAMPAIGN_HASH: ReportsVoiceCampaignHash,
         PathValues.REPORTS_WEBPUSH_CAMPAIGN_HASH: ReportsWebPushCampaignHash,

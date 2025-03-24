@@ -191,7 +191,7 @@ class LimitSchema(
 
 
     class MetaOapg:
-        inclusive_maximum = 100
+        inclusive_maximum = 1000
         inclusive_minimum = 1
 
 

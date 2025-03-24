@@ -5,6 +5,8 @@ All URIs are relative to *https://api.egoiapp.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**generate_by_model_report**](#generate_by_model_report) | **post** /reports/advanced/model | Generate report by model
+[**generate_contact_activity_report**](#generate_contact_activity_report) | **post** /reports/advanced/contact-activity | Generate contact activity report
 [**generate_email_bounces_report**](#generate_email_bounces_report) | **post** /reports/advanced/email-bounces | Generate email bounces report
 [**generate_email_clicks_by_contact_report**](#generate_email_clicks_by_contact_report) | **post** /reports/advanced/email-clicks-by-contact | Generate email clicks by contact report
 [**generate_email_clicks_by_url_report**](#generate_email_clicks_by_url_report) | **post** /reports/advanced/email-clicks-by-url | Generate email clicks by URL report
@@ -17,6 +19,517 @@ Method | HTTP request | Description
 [**generate_subscriptions_report**](#generate_subscriptions_report) | **post** /reports/advanced/subscriptions | Generate subscriptions report
 [**generate_unsubscriptions_report**](#generate_unsubscriptions_report) | **post** /reports/advanced/unsubscriptions | Generate unsubscriptions report
 [**get_all_advanced_reports**](#get_all_advanced_reports) | **get** /reports/advanced | Get all advanced reports
+[**get_all_advanced_reports_models**](#get_all_advanced_reports_models) | **get** /reports/advanced/models | Get all advanced reports models
+
+# **generate_by_model_report**
+<a name="generate_by_model_report"></a>
+> AcceptedResponse generate_by_model_report(generate_by_model_report)
+
+Generate report by model
+
+Generates a new report by model Id
+
+### Example
+
+* Api Key Authentication (Apikey):
+```python
+import egoi_api
+from egoi_api.apis.tags import advanced_reports_api
+from egoi_api.model.request_timeout import RequestTimeout
+from egoi_api.model.unauthorized import Unauthorized
+from egoi_api.model.service_unavailable import ServiceUnavailable
+from egoi_api.model.bad_request import BadRequest
+from egoi_api.model.generate_by_model_report import GenerateByModelReport
+from egoi_api.model.unprocessable_entity import UnprocessableEntity
+from egoi_api.model.internal_server_error import InternalServerError
+from egoi_api.model.accepted_response import AcceptedResponse
+from egoi_api.model.too_many_requests import TooManyRequests
+from egoi_api.model.forbidden import Forbidden
+from pprint import pprint
+# Defining the host is optional and defaults to https://api.egoiapp.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = egoi_api.Configuration(
+    host = "https://api.egoiapp.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: Apikey
+configuration.api_key['Apikey'] = 'YOUR_API_KEY'
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Apikey'] = 'Bearer'
+# Enter a context with an instance of the API client
+with egoi_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = advanced_reports_api.AdvancedReportsApi(api_client)
+
+    # example passing only required values which don't have defaults set
+    body = GenerateByModelReport(
+        model_id=20,
+    )
+    try:
+        # Generate report by model
+        api_response = api_instance.generate_by_model_report(
+            body=body,
+        )
+        pprint(api_response)
+    except egoi_api.ApiException as e:
+        print("Exception when calling AdvancedReportsApi->generate_by_model_report: %s\n" % e)
+```
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+body | typing.Union[SchemaForRequestBodyApplicationJson] | required |
+content_type | str | optional, default is 'application/json' | Selects the schema and serialization of the request body
+accept_content_types | typing.Tuple[str] | default is ('application/json', ) | Tells the server the content type(s) that are accepted by the client
+stream | bool | default is False | if True then the response.content will be streamed and loaded from a file like object. When downloading a file, set this to True to force the code to deserialize the content to a FileSchema file
+timeout | typing.Optional[typing.Union[int, typing.Tuple]] | default is None | the timeout used by the rest client
+skip_deserialization | bool | default is False | when True, headers and body will be unset and an instance of api_client.ApiResponseWithoutDeserialization will be returned
+
+### body
+
+# SchemaForRequestBodyApplicationJson
+Type | Description  | Notes
+------------- | ------------- | -------------
+[**GenerateByModelReport**](../../models/GenerateByModelReport.md) |  | 
+
+
+### Return Types, Responses
+
+Code | Class | Description
+------------- | ------------- | -------------
+n/a | api_client.ApiResponseWithoutDeserialization | When skip_deserialization is True this response is returned
+202 | [ApiResponseFor202](#generate_by_model_report.ApiResponseFor202) | Accepted
+400 | [ApiResponseFor400](#generate_by_model_report.ApiResponseFor400) | Bad Request
+401 | [ApiResponseFor401](#generate_by_model_report.ApiResponseFor401) | Unauthorized
+403 | [ApiResponseFor403](#generate_by_model_report.ApiResponseFor403) | Forbidden
+408 | [ApiResponseFor408](#generate_by_model_report.ApiResponseFor408) | Request Timeout
+422 | [ApiResponseFor422](#generate_by_model_report.ApiResponseFor422) | Unprocessable Entity
+429 | [ApiResponseFor429](#generate_by_model_report.ApiResponseFor429) | Too Many Requests
+500 | [ApiResponseFor500](#generate_by_model_report.ApiResponseFor500) | Internal Server Error
+503 | [ApiResponseFor503](#generate_by_model_report.ApiResponseFor503) | Service Unavailable
+
+#### generate_by_model_report.ApiResponseFor202
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+response | urllib3.HTTPResponse | Raw response |
+body | typing.Union[SchemaFor202ResponseBodyApplicationJson, ] |  |
+headers | Unset | headers were not defined |
+
+# SchemaFor202ResponseBodyApplicationJson
+Type | Description  | Notes
+------------- | ------------- | -------------
+[**AcceptedResponse**](../../models/AcceptedResponse.md) |  | 
+
+
+#### generate_by_model_report.ApiResponseFor400
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+response | urllib3.HTTPResponse | Raw response |
+body | typing.Union[SchemaFor400ResponseBodyApplicationJson, ] |  |
+headers | Unset | headers were not defined |
+
+# SchemaFor400ResponseBodyApplicationJson
+Type | Description  | Notes
+------------- | ------------- | -------------
+[**BadRequest**](../../models/BadRequest.md) |  | 
+
+
+#### generate_by_model_report.ApiResponseFor401
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+response | urllib3.HTTPResponse | Raw response |
+body | typing.Union[SchemaFor401ResponseBodyApplicationJson, ] |  |
+headers | Unset | headers were not defined |
+
+# SchemaFor401ResponseBodyApplicationJson
+Type | Description  | Notes
+------------- | ------------- | -------------
+[**Unauthorized**](../../models/Unauthorized.md) |  | 
+
+
+#### generate_by_model_report.ApiResponseFor403
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+response | urllib3.HTTPResponse | Raw response |
+body | typing.Union[SchemaFor403ResponseBodyApplicationJson, ] |  |
+headers | Unset | headers were not defined |
+
+# SchemaFor403ResponseBodyApplicationJson
+Type | Description  | Notes
+------------- | ------------- | -------------
+[**Forbidden**](../../models/Forbidden.md) |  | 
+
+
+#### generate_by_model_report.ApiResponseFor408
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+response | urllib3.HTTPResponse | Raw response |
+body | typing.Union[SchemaFor408ResponseBodyApplicationJson, ] |  |
+headers | Unset | headers were not defined |
+
+# SchemaFor408ResponseBodyApplicationJson
+Type | Description  | Notes
+------------- | ------------- | -------------
+[**RequestTimeout**](../../models/RequestTimeout.md) |  | 
+
+
+#### generate_by_model_report.ApiResponseFor422
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+response | urllib3.HTTPResponse | Raw response |
+body | typing.Union[SchemaFor422ResponseBodyApplicationJson, ] |  |
+headers | Unset | headers were not defined |
+
+# SchemaFor422ResponseBodyApplicationJson
+Type | Description  | Notes
+------------- | ------------- | -------------
+[**UnprocessableEntity**](../../models/UnprocessableEntity.md) |  | 
+
+
+#### generate_by_model_report.ApiResponseFor429
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+response | urllib3.HTTPResponse | Raw response |
+body | typing.Union[SchemaFor429ResponseBodyApplicationJson, ] |  |
+headers | Unset | headers were not defined |
+
+# SchemaFor429ResponseBodyApplicationJson
+Type | Description  | Notes
+------------- | ------------- | -------------
+[**TooManyRequests**](../../models/TooManyRequests.md) |  | 
+
+
+#### generate_by_model_report.ApiResponseFor500
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+response | urllib3.HTTPResponse | Raw response |
+body | typing.Union[SchemaFor500ResponseBodyApplicationJson, ] |  |
+headers | Unset | headers were not defined |
+
+# SchemaFor500ResponseBodyApplicationJson
+Type | Description  | Notes
+------------- | ------------- | -------------
+[**InternalServerError**](../../models/InternalServerError.md) |  | 
+
+
+#### generate_by_model_report.ApiResponseFor503
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+response | urllib3.HTTPResponse | Raw response |
+body | typing.Union[SchemaFor503ResponseBodyApplicationJson, ] |  |
+headers | Unset | headers were not defined |
+
+# SchemaFor503ResponseBodyApplicationJson
+Type | Description  | Notes
+------------- | ------------- | -------------
+[**ServiceUnavailable**](../../models/ServiceUnavailable.md) |  | 
+
+
+### Authorization
+
+[Apikey](../../../README.md#Apikey)
+
+[[Back to top]](#__pageTop) [[Back to API list]](../../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../../README.md#documentation-for-models) [[Back to README]](../../../README.md)
+
+# **generate_contact_activity_report**
+<a name="generate_contact_activity_report"></a>
+> AcceptedResponse generate_contact_activity_report(generate_contact_activity_report)
+
+Generate contact activity report
+
+Generates a new contact activity report
+
+### Example
+
+* Api Key Authentication (Apikey):
+```python
+import egoi_api
+from egoi_api.apis.tags import advanced_reports_api
+from egoi_api.model.request_timeout import RequestTimeout
+from egoi_api.model.unauthorized import Unauthorized
+from egoi_api.model.service_unavailable import ServiceUnavailable
+from egoi_api.model.generate_contact_activity_report import GenerateContactActivityReport
+from egoi_api.model.bad_request import BadRequest
+from egoi_api.model.unprocessable_entity import UnprocessableEntity
+from egoi_api.model.internal_server_error import InternalServerError
+from egoi_api.model.accepted_response import AcceptedResponse
+from egoi_api.model.too_many_requests import TooManyRequests
+from egoi_api.model.forbidden import Forbidden
+from pprint import pprint
+# Defining the host is optional and defaults to https://api.egoiapp.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = egoi_api.Configuration(
+    host = "https://api.egoiapp.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: Apikey
+configuration.api_key['Apikey'] = 'YOUR_API_KEY'
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Apikey'] = 'Bearer'
+# Enter a context with an instance of the API client
+with egoi_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = advanced_reports_api.AdvancedReportsApi(api_client)
+
+    # example passing only required values which don't have defaults set
+    body = GenerateContactActivityReport(
+        title="Report title",
+        range=AdvancedReportRange(
+            start=None,
+,
+        ),
+        lists=[
+            Id(1)
+        ],
+        columns=AdvancedReportContactActivityColumns(
+            list_base_fields=[
+                "list_base_fields_example"
+            ],
+            list_extra_fields=AdvancedReportListExtraFields([
+                dict(
+                    list_id=QueryId(1),
+                    fields=[
+                        "fields_example"
+                    ],
+                )
+            ]),
+            contact_activities=ContactActivityActivitiesFields(
+                opens=True,
+                clicks=True,
+                recommends=True,
+                conversion=True,
+                email_send=True,
+                sms_send=True,
+                sms_report=True,
+                voice_send=True,
+                voice_report=True,
+                invitation_send=True,
+                invitation_open=True,
+                unsubscribe=True,
+                email_soft_bounce=True,
+                email_hard_bounce=True,
+                subscription=True,
+                resubscription=True,
+                unsubscribe_reason=True,
+                facebook_like=True,
+                social_share=True,
+                unsubscribe_manual=True,
+                double_optin=True,
+                email_spam_complaint=True,
+                email_field_disable=True,
+                cellphone_field_disable=True,
+                phone_field_disable=True,
+                unsubscribe_api=True,
+                email_field_enable=True,
+                cellphone_field_enable=True,
+                phone_field_enable=True,
+                edit_subscription=True,
+                automation_event=True,
+                push_send=True,
+                push_delivered=True,
+                push_error=True,
+                push_received=True,
+                push_open=True,
+                push_canceled=True,
+                push_unsubscription=True,
+                reply_to_email=True,
+                web_push_send=True,
+                web_push_delivered=True,
+                web_push_open=True,
+                web_push_bounce=True,
+                web_push_click=True,
+                web_push_subscription=True,
+                web_push_unsubscription=True,
+                forget_subscription=True,
+                change_consent=True,
+                double_optin_resend=True,
+                double_optedit=True,
+            ),
+        ),
+        options=AdvancedReportContactActivityOptions(
+            notify=[
+                QueryId(1)
+            ],
+        ),
+        callback_url="callback_url_example",
+    )
+    try:
+        # Generate contact activity report
+        api_response = api_instance.generate_contact_activity_report(
+            body=body,
+        )
+        pprint(api_response)
+    except egoi_api.ApiException as e:
+        print("Exception when calling AdvancedReportsApi->generate_contact_activity_report: %s\n" % e)
+```
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+body | typing.Union[SchemaForRequestBodyApplicationJson] | required |
+content_type | str | optional, default is 'application/json' | Selects the schema and serialization of the request body
+accept_content_types | typing.Tuple[str] | default is ('application/json', ) | Tells the server the content type(s) that are accepted by the client
+stream | bool | default is False | if True then the response.content will be streamed and loaded from a file like object. When downloading a file, set this to True to force the code to deserialize the content to a FileSchema file
+timeout | typing.Optional[typing.Union[int, typing.Tuple]] | default is None | the timeout used by the rest client
+skip_deserialization | bool | default is False | when True, headers and body will be unset and an instance of api_client.ApiResponseWithoutDeserialization will be returned
+
+### body
+
+# SchemaForRequestBodyApplicationJson
+Type | Description  | Notes
+------------- | ------------- | -------------
+[**GenerateContactActivityReport**](../../models/GenerateContactActivityReport.md) |  | 
+
+
+### Return Types, Responses
+
+Code | Class | Description
+------------- | ------------- | -------------
+n/a | api_client.ApiResponseWithoutDeserialization | When skip_deserialization is True this response is returned
+202 | [ApiResponseFor202](#generate_contact_activity_report.ApiResponseFor202) | Accepted
+400 | [ApiResponseFor400](#generate_contact_activity_report.ApiResponseFor400) | Bad Request
+401 | [ApiResponseFor401](#generate_contact_activity_report.ApiResponseFor401) | Unauthorized
+403 | [ApiResponseFor403](#generate_contact_activity_report.ApiResponseFor403) | Forbidden
+408 | [ApiResponseFor408](#generate_contact_activity_report.ApiResponseFor408) | Request Timeout
+422 | [ApiResponseFor422](#generate_contact_activity_report.ApiResponseFor422) | Unprocessable Entity
+429 | [ApiResponseFor429](#generate_contact_activity_report.ApiResponseFor429) | Too Many Requests
+500 | [ApiResponseFor500](#generate_contact_activity_report.ApiResponseFor500) | Internal Server Error
+503 | [ApiResponseFor503](#generate_contact_activity_report.ApiResponseFor503) | Service Unavailable
+
+#### generate_contact_activity_report.ApiResponseFor202
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+response | urllib3.HTTPResponse | Raw response |
+body | typing.Union[SchemaFor202ResponseBodyApplicationJson, ] |  |
+headers | Unset | headers were not defined |
+
+# SchemaFor202ResponseBodyApplicationJson
+Type | Description  | Notes
+------------- | ------------- | -------------
+[**AcceptedResponse**](../../models/AcceptedResponse.md) |  | 
+
+
+#### generate_contact_activity_report.ApiResponseFor400
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+response | urllib3.HTTPResponse | Raw response |
+body | typing.Union[SchemaFor400ResponseBodyApplicationJson, ] |  |
+headers | Unset | headers were not defined |
+
+# SchemaFor400ResponseBodyApplicationJson
+Type | Description  | Notes
+------------- | ------------- | -------------
+[**BadRequest**](../../models/BadRequest.md) |  | 
+
+
+#### generate_contact_activity_report.ApiResponseFor401
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+response | urllib3.HTTPResponse | Raw response |
+body | typing.Union[SchemaFor401ResponseBodyApplicationJson, ] |  |
+headers | Unset | headers were not defined |
+
+# SchemaFor401ResponseBodyApplicationJson
+Type | Description  | Notes
+------------- | ------------- | -------------
+[**Unauthorized**](../../models/Unauthorized.md) |  | 
+
+
+#### generate_contact_activity_report.ApiResponseFor403
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+response | urllib3.HTTPResponse | Raw response |
+body | typing.Union[SchemaFor403ResponseBodyApplicationJson, ] |  |
+headers | Unset | headers were not defined |
+
+# SchemaFor403ResponseBodyApplicationJson
+Type | Description  | Notes
+------------- | ------------- | -------------
+[**Forbidden**](../../models/Forbidden.md) |  | 
+
+
+#### generate_contact_activity_report.ApiResponseFor408
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+response | urllib3.HTTPResponse | Raw response |
+body | typing.Union[SchemaFor408ResponseBodyApplicationJson, ] |  |
+headers | Unset | headers were not defined |
+
+# SchemaFor408ResponseBodyApplicationJson
+Type | Description  | Notes
+------------- | ------------- | -------------
+[**RequestTimeout**](../../models/RequestTimeout.md) |  | 
+
+
+#### generate_contact_activity_report.ApiResponseFor422
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+response | urllib3.HTTPResponse | Raw response |
+body | typing.Union[SchemaFor422ResponseBodyApplicationJson, ] |  |
+headers | Unset | headers were not defined |
+
+# SchemaFor422ResponseBodyApplicationJson
+Type | Description  | Notes
+------------- | ------------- | -------------
+[**UnprocessableEntity**](../../models/UnprocessableEntity.md) |  | 
+
+
+#### generate_contact_activity_report.ApiResponseFor429
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+response | urllib3.HTTPResponse | Raw response |
+body | typing.Union[SchemaFor429ResponseBodyApplicationJson, ] |  |
+headers | Unset | headers were not defined |
+
+# SchemaFor429ResponseBodyApplicationJson
+Type | Description  | Notes
+------------- | ------------- | -------------
+[**TooManyRequests**](../../models/TooManyRequests.md) |  | 
+
+
+#### generate_contact_activity_report.ApiResponseFor500
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+response | urllib3.HTTPResponse | Raw response |
+body | typing.Union[SchemaFor500ResponseBodyApplicationJson, ] |  |
+headers | Unset | headers were not defined |
+
+# SchemaFor500ResponseBodyApplicationJson
+Type | Description  | Notes
+------------- | ------------- | -------------
+[**InternalServerError**](../../models/InternalServerError.md) |  | 
+
+
+#### generate_contact_activity_report.ApiResponseFor503
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+response | urllib3.HTTPResponse | Raw response |
+body | typing.Union[SchemaFor503ResponseBodyApplicationJson, ] |  |
+headers | Unset | headers were not defined |
+
+# SchemaFor503ResponseBodyApplicationJson
+Type | Description  | Notes
+------------- | ------------- | -------------
+[**ServiceUnavailable**](../../models/ServiceUnavailable.md) |  | 
+
+
+### Authorization
+
+[Apikey](../../../README.md#Apikey)
+
+[[Back to top]](#__pageTop) [[Back to API list]](../../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../../README.md#documentation-for-models) [[Back to README]](../../../README.md)
 
 # **generate_email_bounces_report**
 <a name="generate_email_bounces_report"></a>
@@ -3093,6 +3606,272 @@ Type | Description  | Notes
 
 
 #### get_all_advanced_reports.ApiResponseFor503
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+response | urllib3.HTTPResponse | Raw response |
+body | typing.Union[SchemaFor503ResponseBodyApplicationJson, ] |  |
+headers | Unset | headers were not defined |
+
+# SchemaFor503ResponseBodyApplicationJson
+Type | Description  | Notes
+------------- | ------------- | -------------
+[**ServiceUnavailable**](../../models/ServiceUnavailable.md) |  | 
+
+
+### Authorization
+
+[Apikey](../../../README.md#Apikey)
+
+[[Back to top]](#__pageTop) [[Back to API list]](../../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../../README.md#documentation-for-models) [[Back to README]](../../../README.md)
+
+# **get_all_advanced_reports_models**
+<a name="get_all_advanced_reports_models"></a>
+> {str: (bool, date, datetime, dict, float, int, list, str, none_type)} get_all_advanced_reports_models()
+
+Get all advanced reports models
+
+Returns all advanced reports
+
+### Example
+
+* Api Key Authentication (Apikey):
+```python
+import egoi_api
+from egoi_api.apis.tags import advanced_reports_api
+from egoi_api.model.request_timeout import RequestTimeout
+from egoi_api.model.unauthorized import Unauthorized
+from egoi_api.model.service_unavailable import ServiceUnavailable
+from egoi_api.model.advanced_report_models import AdvancedReportModels
+from egoi_api.model.unprocessable_entity import UnprocessableEntity
+from egoi_api.model.internal_server_error import InternalServerError
+from egoi_api.model.too_many_requests import TooManyRequests
+from egoi_api.model.forbidden import Forbidden
+from pprint import pprint
+# Defining the host is optional and defaults to https://api.egoiapp.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = egoi_api.Configuration(
+    host = "https://api.egoiapp.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: Apikey
+configuration.api_key['Apikey'] = 'YOUR_API_KEY'
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Apikey'] = 'Bearer'
+# Enter a context with an instance of the API client
+with egoi_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = advanced_reports_api.AdvancedReportsApi(api_client)
+
+    # example passing only optional values
+    query_params = {
+        'title': "title_example",
+        'offset': 0,
+        'limit': 10,
+        'order': "desc",
+        'order_by': "model_id",
+    }
+    try:
+        # Get all advanced reports models
+        api_response = api_instance.get_all_advanced_reports_models(
+            query_params=query_params,
+        )
+        pprint(api_response)
+    except egoi_api.ApiException as e:
+        print("Exception when calling AdvancedReportsApi->get_all_advanced_reports_models: %s\n" % e)
+```
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+query_params | RequestQueryParams | |
+accept_content_types | typing.Tuple[str] | default is ('application/json', ) | Tells the server the content type(s) that are accepted by the client
+stream | bool | default is False | if True then the response.content will be streamed and loaded from a file like object. When downloading a file, set this to True to force the code to deserialize the content to a FileSchema file
+timeout | typing.Optional[typing.Union[int, typing.Tuple]] | default is None | the timeout used by the rest client
+skip_deserialization | bool | default is False | when True, headers and body will be unset and an instance of api_client.ApiResponseWithoutDeserialization will be returned
+
+### query_params
+#### RequestQueryParams
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+title | TitleSchema | | optional
+offset | OffsetSchema | | optional
+limit | LimitSchema | | optional
+order | OrderSchema | | optional
+order_by | OrderBySchema | | optional
+
+
+# TitleSchema
+
+## Model Type Info
+Input Type | Accessed Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+str,  | str,  |  | 
+
+# OffsetSchema
+
+## Model Type Info
+Input Type | Accessed Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+decimal.Decimal, int,  | decimal.Decimal,  |  | 
+
+# LimitSchema
+
+## Model Type Info
+Input Type | Accessed Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+decimal.Decimal, int,  | decimal.Decimal,  |  | if omitted the server will use the default value of 10
+
+# OrderSchema
+
+## Model Type Info
+Input Type | Accessed Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+str,  | str,  |  | must be one of ["asc", "desc", ] if omitted the server will use the default value of "desc"
+
+# OrderBySchema
+
+## Model Type Info
+Input Type | Accessed Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+str,  | str,  |  | must be one of ["model_id", "title", "created", ] if omitted the server will use the default value of "model_id"
+
+### Return Types, Responses
+
+Code | Class | Description
+------------- | ------------- | -------------
+n/a | api_client.ApiResponseWithoutDeserialization | When skip_deserialization is True this response is returned
+200 | [ApiResponseFor200](#get_all_advanced_reports_models.ApiResponseFor200) | OK
+401 | [ApiResponseFor401](#get_all_advanced_reports_models.ApiResponseFor401) | Unauthorized
+403 | [ApiResponseFor403](#get_all_advanced_reports_models.ApiResponseFor403) | Forbidden
+408 | [ApiResponseFor408](#get_all_advanced_reports_models.ApiResponseFor408) | Request Timeout
+422 | [ApiResponseFor422](#get_all_advanced_reports_models.ApiResponseFor422) | Unprocessable Entity
+429 | [ApiResponseFor429](#get_all_advanced_reports_models.ApiResponseFor429) | Too Many Requests
+500 | [ApiResponseFor500](#get_all_advanced_reports_models.ApiResponseFor500) | Internal Server Error
+503 | [ApiResponseFor503](#get_all_advanced_reports_models.ApiResponseFor503) | Service Unavailable
+
+#### get_all_advanced_reports_models.ApiResponseFor200
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+response | urllib3.HTTPResponse | Raw response |
+body | typing.Union[SchemaFor200ResponseBodyApplicationJson, ] |  |
+headers | Unset | headers were not defined |
+
+# SchemaFor200ResponseBodyApplicationJson
+
+Collection of advanced reports models
+
+## Model Type Info
+Input Type | Accessed Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+dict, frozendict.frozendict,  | frozendict.frozendict,  | Collection of advanced reports models | 
+
+### Dictionary Keys
+Key | Input Type | Accessed Type | Description | Notes
+------------ | ------------- | ------------- | ------------- | -------------
+**total_items** | decimal.Decimal, int,  | decimal.Decimal,  | Total advanced reports models | [optional] 
+**[items](#items)** | list, tuple,  | tuple,  | Returned advanced reports models | [optional] 
+**any_string_name** | dict, frozendict.frozendict, str, date, datetime, int, float, bool, decimal.Decimal, None, list, tuple, bytes, io.FileIO, io.BufferedReader | frozendict.frozendict, str, BoolClass, decimal.Decimal, NoneClass, tuple, bytes, FileIO | any string name can be used but the value must be the correct type | [optional]
+
+# items
+
+Returned advanced reports models
+
+## Model Type Info
+Input Type | Accessed Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+list, tuple,  | tuple,  | Returned advanced reports models | 
+
+### Tuple Items
+Class Name | Input Type | Accessed Type | Description | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+[**AdvancedReportModels**]({{complexTypePrefix}}AdvancedReportModels.md) | [**AdvancedReportModels**]({{complexTypePrefix}}AdvancedReportModels.md) | [**AdvancedReportModels**]({{complexTypePrefix}}AdvancedReportModels.md) |  | 
+
+#### get_all_advanced_reports_models.ApiResponseFor401
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+response | urllib3.HTTPResponse | Raw response |
+body | typing.Union[SchemaFor401ResponseBodyApplicationJson, ] |  |
+headers | Unset | headers were not defined |
+
+# SchemaFor401ResponseBodyApplicationJson
+Type | Description  | Notes
+------------- | ------------- | -------------
+[**Unauthorized**](../../models/Unauthorized.md) |  | 
+
+
+#### get_all_advanced_reports_models.ApiResponseFor403
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+response | urllib3.HTTPResponse | Raw response |
+body | typing.Union[SchemaFor403ResponseBodyApplicationJson, ] |  |
+headers | Unset | headers were not defined |
+
+# SchemaFor403ResponseBodyApplicationJson
+Type | Description  | Notes
+------------- | ------------- | -------------
+[**Forbidden**](../../models/Forbidden.md) |  | 
+
+
+#### get_all_advanced_reports_models.ApiResponseFor408
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+response | urllib3.HTTPResponse | Raw response |
+body | typing.Union[SchemaFor408ResponseBodyApplicationJson, ] |  |
+headers | Unset | headers were not defined |
+
+# SchemaFor408ResponseBodyApplicationJson
+Type | Description  | Notes
+------------- | ------------- | -------------
+[**RequestTimeout**](../../models/RequestTimeout.md) |  | 
+
+
+#### get_all_advanced_reports_models.ApiResponseFor422
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+response | urllib3.HTTPResponse | Raw response |
+body | typing.Union[SchemaFor422ResponseBodyApplicationJson, ] |  |
+headers | Unset | headers were not defined |
+
+# SchemaFor422ResponseBodyApplicationJson
+Type | Description  | Notes
+------------- | ------------- | -------------
+[**UnprocessableEntity**](../../models/UnprocessableEntity.md) |  | 
+
+
+#### get_all_advanced_reports_models.ApiResponseFor429
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+response | urllib3.HTTPResponse | Raw response |
+body | typing.Union[SchemaFor429ResponseBodyApplicationJson, ] |  |
+headers | Unset | headers were not defined |
+
+# SchemaFor429ResponseBodyApplicationJson
+Type | Description  | Notes
+------------- | ------------- | -------------
+[**TooManyRequests**](../../models/TooManyRequests.md) |  | 
+
+
+#### get_all_advanced_reports_models.ApiResponseFor500
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+response | urllib3.HTTPResponse | Raw response |
+body | typing.Union[SchemaFor500ResponseBodyApplicationJson, ] |  |
+headers | Unset | headers were not defined |
+
+# SchemaFor500ResponseBodyApplicationJson
+Type | Description  | Notes
+------------- | ------------- | -------------
+[**InternalServerError**](../../models/InternalServerError.md) |  | 
+
+
+#### get_all_advanced_reports_models.ApiResponseFor503
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 response | urllib3.HTTPResponse | Raw response |

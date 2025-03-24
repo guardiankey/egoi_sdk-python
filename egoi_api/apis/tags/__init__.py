@@ -15,7 +15,6 @@ class TagValues(str, enum.Enum):
     CONNECTED_SITES = "Connected Sites"
     CONTACTS = "Contacts"
     ECOMMERCE = "Ecommerce"
-    ECOMMERCE_ACTIVITY = "Ecommerce Activity"
     EMAIL = "Email"
     FIELDS = "Fields"
     LISTS = "Lists"

@@ -24,9 +24,24 @@ dict, frozendict.frozendict,  | frozendict.frozendict,  |  |
 ### Dictionary Keys
 Key | Input Type | Accessed Type | Description | Notes
 ------------ | ------------- | ------------- | ------------- | -------------
-**language** | [**Language**](Language.md) | [**Language**](Language.md) |  | [optional] 
+**default_language** | [**Language**](Language.md) | [**Language**](Language.md) |  | [optional] 
+**[available_languages](#available_languages)** | list, tuple,  | tuple,  | Array of available languages | [optional] 
 **[stats](#stats)** | dict, frozendict.frozendict,  | frozendict.frozendict,  | Contact stats of the list | [optional] 
 **any_string_name** | dict, frozendict.frozendict, str, date, datetime, int, float, bool, decimal.Decimal, None, list, tuple, bytes, io.FileIO, io.BufferedReader | frozendict.frozendict, str, BoolClass, decimal.Decimal, NoneClass, tuple, bytes, FileIO | any string name can be used but the value must be the correct type | [optional]
+
+# available_languages
+
+Array of available languages
+
+## Model Type Info
+Input Type | Accessed Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+list, tuple,  | tuple,  | Array of available languages | 
+
+### Tuple Items
+Class Name | Input Type | Accessed Type | Description | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+items | str,  | str,  |  | 
 
 # stats
 

@@ -1143,6 +1143,7 @@ with egoi_api.ApiClient(configuration) as api_client:
         os="os_example",
         contact="contact_example",
         message_hash="message_hash_example",
+        mailing_id=1,
         event="event_example",
         device_id=1,
     )

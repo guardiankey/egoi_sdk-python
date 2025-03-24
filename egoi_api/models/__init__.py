@@ -25,6 +25,8 @@ from egoi_api.model.activate_contacts_request import ActivateContactsRequest
 from egoi_api.model.advanced_report import AdvancedReport
 from egoi_api.model.advanced_report_campaigns import AdvancedReportCampaigns
 from egoi_api.model.advanced_report_campaigns_object import AdvancedReportCampaignsObject
+from egoi_api.model.advanced_report_contact_activity_columns import AdvancedReportContactActivityColumns
+from egoi_api.model.advanced_report_contact_activity_options import AdvancedReportContactActivityOptions
 from egoi_api.model.advanced_report_email_bounces_columns import AdvancedReportEmailBouncesColumns
 from egoi_api.model.advanced_report_email_bounces_options import AdvancedReportEmailBouncesOptions
 from egoi_api.model.advanced_report_email_clicks_by_contact_columns import AdvancedReportEmailClicksByContactColumns
@@ -37,6 +39,7 @@ from egoi_api.model.advanced_report_email_unsubscriptions_columns import Advance
 from egoi_api.model.advanced_report_email_unsubscriptions_options import AdvancedReportEmailUnsubscriptionsOptions
 from egoi_api.model.advanced_report_forms import AdvancedReportForms
 from egoi_api.model.advanced_report_list_extra_fields import AdvancedReportListExtraFields
+from egoi_api.model.advanced_report_models import AdvancedReportModels
 from egoi_api.model.advanced_report_range import AdvancedReportRange
 from egoi_api.model.advanced_report_sends_columns import AdvancedReportSendsColumns
 from egoi_api.model.advanced_report_sends_options import AdvancedReportSendsOptions
@@ -55,6 +58,7 @@ from egoi_api.model.attach_tag_request import AttachTagRequest
 from egoi_api.model.attach_tag_response import AttachTagResponse
 from egoi_api.model.automatic_segment import AutomaticSegment
 from egoi_api.model.automation import Automation
+from egoi_api.model.automation_actions import AutomationActions
 from egoi_api.model.automation_post import AutomationPost
 from egoi_api.model.bad_request import BadRequest
 from egoi_api.model.balance_info import BalanceInfo
@@ -136,7 +140,10 @@ from egoi_api.model.contact_activity_abstract_actions_with_automations import Co
 from egoi_api.model.contact_activity_abstract_actions_with_campaign import ContactActivityAbstractActionsWithCampaign
 from egoi_api.model.contact_activity_abstract_actions_with_data import ContactActivityAbstractActionsWithData
 from egoi_api.model.contact_activity_abstract_actions_with_tags import ContactActivityAbstractActionsWithTags
+from egoi_api.model.contact_activity_activities_fields import ContactActivityActivitiesFields
 from egoi_api.model.contact_activity_click import ContactActivityClick
+from egoi_api.model.contact_advertising_post import ContactAdvertisingPost
+from egoi_api.model.contact_advertising_post_schema import ContactAdvertisingPostSchema
 from egoi_api.model.contact_automations_activity import ContactAutomationsActivity
 from egoi_api.model.contact_base_extra import ContactBaseExtra
 from egoi_api.model.contact_base_extra_bulk import ContactBaseExtraBulk
@@ -153,10 +160,13 @@ from egoi_api.model.contact_base_with_status_fields_bulk_schema import ContactBa
 from egoi_api.model.contact_base_with_status_fields_no_tokens_schema import ContactBaseWithStatusFieldsNoTokensSchema
 from egoi_api.model.contact_base_with_status_fields_schema import ContactBaseWithStatusFieldsSchema
 from egoi_api.model.contact_base_with_status_no_removed_fields_schema import ContactBaseWithStatusNoRemovedFieldsSchema
+from egoi_api.model.contact_body_email import ContactBodyEmail
 from egoi_api.model.contact_body_id import ContactBodyId
 from egoi_api.model.contact_bulk import ContactBulk
 from egoi_api.model.contact_bulk_file import ContactBulkFile
+from egoi_api.model.contact_by_field_fields_post_schema import ContactByFieldFieldsPostSchema
 from egoi_api.model.contact_campaign_activity import ContactCampaignActivity
+from egoi_api.model.contact_compare_field_post import ContactCompareFieldPost
 from egoi_api.model.contact_export_request import ContactExportRequest
 from egoi_api.model.contact_extra_field_cellphone import ContactExtraFieldCellphone
 from egoi_api.model.contact_extra_field_cellphone_bulk import ContactExtraFieldCellphoneBulk
@@ -172,6 +182,7 @@ from egoi_api.model.contact_extra_fields import ContactExtraFields
 from egoi_api.model.contact_extra_fields_bulk import ContactExtraFieldsBulk
 from egoi_api.model.contact_extra_fields_bulk_schema import ContactExtraFieldsBulkSchema
 from egoi_api.model.contact_extra_fields_schema import ContactExtraFieldsSchema
+from egoi_api.model.contact_field_id_base_extra_post import ContactFieldIdBaseExtraPost
 from egoi_api.model.contact_field_mapping_file_bulk_schema import ContactFieldMappingFileBulkSchema
 from egoi_api.model.contact_forget_request import ContactForgetRequest
 from egoi_api.model.contact_id import ContactId
@@ -181,12 +192,18 @@ from egoi_api.model.contact_inside_base_post import ContactInsideBasePost
 from egoi_api.model.contact_inside_base_with_id import ContactInsideBaseWithId
 from egoi_api.model.contact_other_activity import ContactOtherActivity
 from egoi_api.model.contact_query_id import ContactQueryId
+from egoi_api.model.contact_referrer_post import ContactReferrerPost
+from egoi_api.model.contact_referrer_post_schema import ContactReferrerPostSchema
 from egoi_api.model.contact_search_response import ContactSearchResponse
+from egoi_api.model.contact_stats import ContactStats
 from egoi_api.model.contact_status_fields_bulk_schema import ContactStatusFieldsBulkSchema
 from egoi_api.model.contact_status_fields_schema import ContactStatusFieldsSchema
 from egoi_api.model.contact_tag_activity import ContactTagActivity
 from egoi_api.model.contact_tags import ContactTags
 from egoi_api.model.contact_tags_bulk import ContactTagsBulk
+from egoi_api.model.contact_utm_post import ContactUtmPost
+from egoi_api.model.contact_utm_post_schema import ContactUtmPostSchema
+from egoi_api.model.contact_utm_referrer_advertising_post import ContactUtmReferrerAdvertisingPost
 from egoi_api.model.contacts_action_update_contacts_schema import ContactsActionUpdateContactsSchema
 from egoi_api.model.content_voice import ContentVoice
 from egoi_api.model.content_voice_audio import ContentVoiceAudio
@@ -256,6 +273,8 @@ from egoi_api.model.field_option_post import FieldOptionPost
 from egoi_api.model.forbidden import Forbidden
 from egoi_api.model.form import Form
 from egoi_api.model.general_info import GeneralInfo
+from egoi_api.model.generate_by_model_report import GenerateByModelReport
+from egoi_api.model.generate_contact_activity_report import GenerateContactActivityReport
 from egoi_api.model.generate_email_bounces_report import GenerateEmailBouncesReport
 from egoi_api.model.generate_email_clicks_by_contact_report import GenerateEmailClicksByContactReport
 from egoi_api.model.generate_email_clicks_by_url_report import GenerateEmailClicksByUrlReport
@@ -352,8 +371,8 @@ from egoi_api.model.push_notification_sound_schema_none import PushNotificationS
 from egoi_api.model.push_notification_sound_schema_url import PushNotificationSoundSchemaUrl
 from egoi_api.model.push_report import PushReport
 from egoi_api.model.push_response import PushResponse
+from egoi_api.model.push_stats import PushStats
 from egoi_api.model.push_token import PushToken
-from egoi_api.model.push_versions import PushVersions
 from egoi_api.model.query_id import QueryId
 from egoi_api.model.remove_request import RemoveRequest
 from egoi_api.model.remove_response import RemoveResponse
