@@ -403,7 +403,7 @@ conf = egoi_api.Configuration(
                "OS: {env}\n"\
                "Python Version: {pyversion}\n"\
                "Version of the API: V3\n"\
-               "SDK Package Version: 1.1.6RC1".\
+               "SDK Package Version: 1.1.7RC1".\
                format(env=sys.platform, pyversion=sys.version)
 
     def get_host_settings(self):

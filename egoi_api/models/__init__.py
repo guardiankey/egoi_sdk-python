@@ -338,6 +338,7 @@ from egoi_api.model.operation_action_request import OperationActionRequest
 from egoi_api.model.operation_action_response import OperationActionResponse
 from egoi_api.model.order import Order
 from egoi_api.model.order_patch_request import OrderPatchRequest
+from egoi_api.model.order_product import OrderProduct
 from egoi_api.model.overall import Overall
 from egoi_api.model.patch_request_base_field import PatchRequestBaseField
 from egoi_api.model.patch_request_field import PatchRequestField

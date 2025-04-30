@@ -11,11 +11,12 @@ dict, frozendict.frozendict,  | frozendict.frozendict,  | Order data |
 Key | Input Type | Accessed Type | Description | Notes
 ------------ | ------------- | ------------- | ------------- | -------------
 **[date](#date)** | dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, bool, None, list, tuple, bytes, io.FileIO, io.BufferedReader,  | frozendict.frozendict, str, decimal.Decimal, BoolClass, NoneClass, tuple, bytes, FileIO | Ecommerce order date (For technical reasons, all orders synchronized will have the date of synchronization.) | 
-**revenue** | decimal.Decimal, int, float,  | decimal.Decimal,  | Ecommerce order revenue | 
+**revenue** | decimal.Decimal, int, float,  | decimal.Decimal,  | Ecommerce order revenue. Must be greater than 0. | 
+**contact_id** | str,  | str,  | Contact ID is any non-empty unique string identifying the user (such as an email address or e-goi uid) | 
 **[items](#items)** | list, tuple,  | tuple,  | Array of ordered products | 
 **order_id** | str,  | str,  | Ecommerce order id | 
 **store_url** | str,  | str,  | Ecommerce store url | 
-**contact_id** | str,  | str,  | Contact ID is any non-empty unique string identifying the user (such as an email address or e-goi uid) | [optional] 
+**order_status** | str,  | str,  | Status of the order | [optional] must be one of ["created", "pending", "canceled", "completed", "unknown", ] if omitted the server will use the default value of "unknown"
 **any_string_name** | dict, frozendict.frozendict, str, date, datetime, int, float, bool, decimal.Decimal, None, list, tuple, bytes, io.FileIO, io.BufferedReader | frozendict.frozendict, str, BoolClass, decimal.Decimal, NoneClass, tuple, bytes, FileIO | any string name can be used but the value must be the correct type | [optional]
 
 # date

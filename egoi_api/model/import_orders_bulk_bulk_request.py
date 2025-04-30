@@ -39,6 +39,7 @@ class ImportOrdersBulkBulkRequest(
         required = {
             "date",
             "revenue",
+            "contact_id",
             "items",
             "order_id",
             "store_url",
@@ -46,6 +47,7 @@ class ImportOrdersBulkBulkRequest(
         
         class properties:
             order_id = schemas.StrSchema
+            contact_id = schemas.StrSchema
             
             
             class revenue(
@@ -119,24 +121,64 @@ class ImportOrdersBulkBulkRequest(
             
                 def __getitem__(self, i: int) -> 'ImportOrdersBulkBulkRequestItems':
                     return super().__getitem__(i)
-            contact_id = schemas.StrSchema
+            
+            
+            class order_status(
+                schemas.EnumBase,
+                schemas.StrSchema
+            ):
+            
+            
+                class MetaOapg:
+                    enum_value_to_name = {
+                        "created": "CREATED",
+                        "pending": "PENDING",
+                        "canceled": "CANCELED",
+                        "completed": "COMPLETED",
+                        "unknown": "UNKNOWN",
+                    }
+                
+                @schemas.classproperty
+                def CREATED(cls):
+                    return cls("created")
+                
+                @schemas.classproperty
+                def PENDING(cls):
+                    return cls("pending")
+                
+                @schemas.classproperty
+                def CANCELED(cls):
+                    return cls("canceled")
+                
+                @schemas.classproperty
+                def COMPLETED(cls):
+                    return cls("completed")
+                
+                @schemas.classproperty
+                def UNKNOWN(cls):
+                    return cls("unknown")
             __annotations__ = {
                 "order_id": order_id,
+                "contact_id": contact_id,
                 "revenue": revenue,
                 "store_url": store_url,
                 "date": date,
                 "items": items,
-                "contact_id": contact_id,
+                "order_status": order_status,
             }
     
     date: MetaOapg.properties.date
     revenue: MetaOapg.properties.revenue
+    contact_id: MetaOapg.properties.contact_id
     items: MetaOapg.properties.items
     order_id: MetaOapg.properties.order_id
     store_url: MetaOapg.properties.store_url
     
     @typing.overload
     def __getitem__(self, name: typing_extensions.Literal["order_id"]) -> MetaOapg.properties.order_id: ...
+    
+    @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["contact_id"]) -> MetaOapg.properties.contact_id: ...
     
     @typing.overload
     def __getitem__(self, name: typing_extensions.Literal["revenue"]) -> MetaOapg.properties.revenue: ...
@@ -151,18 +193,21 @@ class ImportOrdersBulkBulkRequest(
     def __getitem__(self, name: typing_extensions.Literal["items"]) -> MetaOapg.properties.items: ...
     
     @typing.overload
-    def __getitem__(self, name: typing_extensions.Literal["contact_id"]) -> MetaOapg.properties.contact_id: ...
+    def __getitem__(self, name: typing_extensions.Literal["order_status"]) -> MetaOapg.properties.order_status: ...
     
     @typing.overload
     def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
     
-    def __getitem__(self, name: typing.Union[typing_extensions.Literal["order_id", "revenue", "store_url", "date", "items", "contact_id", ], str]):
+    def __getitem__(self, name: typing.Union[typing_extensions.Literal["order_id", "contact_id", "revenue", "store_url", "date", "items", "order_status", ], str]):
         # dict_instance[name] accessor
         return super().__getitem__(name)
     
     
     @typing.overload
     def get_item_oapg(self, name: typing_extensions.Literal["order_id"]) -> MetaOapg.properties.order_id: ...
+    
+    @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["contact_id"]) -> MetaOapg.properties.contact_id: ...
     
     @typing.overload
     def get_item_oapg(self, name: typing_extensions.Literal["revenue"]) -> MetaOapg.properties.revenue: ...
@@ -177,12 +222,12 @@ class ImportOrdersBulkBulkRequest(
     def get_item_oapg(self, name: typing_extensions.Literal["items"]) -> MetaOapg.properties.items: ...
     
     @typing.overload
-    def get_item_oapg(self, name: typing_extensions.Literal["contact_id"]) -> typing.Union[MetaOapg.properties.contact_id, schemas.Unset]: ...
+    def get_item_oapg(self, name: typing_extensions.Literal["order_status"]) -> typing.Union[MetaOapg.properties.order_status, schemas.Unset]: ...
     
     @typing.overload
     def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
     
-    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["order_id", "revenue", "store_url", "date", "items", "contact_id", ], str]):
+    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["order_id", "contact_id", "revenue", "store_url", "date", "items", "order_status", ], str]):
         return super().get_item_oapg(name)
     
 
@@ -191,10 +236,11 @@ class ImportOrdersBulkBulkRequest(
         *args: typing.Union[dict, frozendict.frozendict, ],
         date: typing.Union[MetaOapg.properties.date, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, bool, None, list, tuple, bytes, io.FileIO, io.BufferedReader, ],
         revenue: typing.Union[MetaOapg.properties.revenue, decimal.Decimal, int, float, ],
+        contact_id: typing.Union[MetaOapg.properties.contact_id, str, ],
         items: typing.Union[MetaOapg.properties.items, list, tuple, ],
         order_id: typing.Union[MetaOapg.properties.order_id, str, ],
         store_url: typing.Union[MetaOapg.properties.store_url, str, ],
-        contact_id: typing.Union[MetaOapg.properties.contact_id, str, schemas.Unset] = schemas.unset,
+        order_status: typing.Union[MetaOapg.properties.order_status, str, schemas.Unset] = schemas.unset,
         _configuration: typing.Optional[schemas.Configuration] = None,
         **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
     ) -> 'ImportOrdersBulkBulkRequest':
@@ -203,10 +249,11 @@ class ImportOrdersBulkBulkRequest(
             *args,
             date=date,
             revenue=revenue,
+            contact_id=contact_id,
             items=items,
             order_id=order_id,
             store_url=store_url,
-            contact_id=contact_id,
+            order_status=order_status,
             _configuration=_configuration,
             **kwargs,
         )

@@ -1,14 +1,18 @@
 ![E-goi](https://www.e-goi.com/wp-content/themes/egoi2019/imgs/svg/logo-egoi.svg)
 
+Get started quickly with E-goi with our integration tools. Our SDK is a modern open source library that makes it easy to integrate your application with E-goi services.
+
 Almost anything you can do in E-goi, you can do with our API.
 
 The API describes each available method. Learn about parameters, errors, and how to format your requests. That means you can easily call on E-goi actions for your integration.
 **API** Full documentation at https://developers.e-goi.com/api/v3/
 
-If you find a bug or something worth fixing, create an issue.
+**Note:** This repository is currently in **Release Candidate** stage. Use with caution in production environments.
+
+Feel free to **fork this repository** and adapt it to your needs. Contributions and improvements are always welcome!
 
 ### Changelog
-#### 1.1.6RC1
+#### 1.1.7RC1
 ## Requirements.
 
 Python &gt;&#x3D;3.7
@@ -646,6 +650,7 @@ Class | Method | HTTP request | Description
  - [OperationActionResponse](docs/models/OperationActionResponse.md)
  - [Order](docs/models/Order.md)
  - [OrderPatchRequest](docs/models/OrderPatchRequest.md)
+ - [OrderProduct](docs/models/OrderProduct.md)
  - [Overall](docs/models/Overall.md)
  - [PatchRequestBaseField](docs/models/PatchRequestBaseField.md)
  - [PatchRequestField](docs/models/PatchRequestField.md)

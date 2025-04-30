@@ -12,7 +12,7 @@
 from setuptools import setup, find_packages  # noqa: H301
 
 NAME = "egoi_sdk"
-VERSION = "1.1.6RC1"
+VERSION = "1.1.7RC1"
 # To install the library, run the following
 #
 # python setup.py install

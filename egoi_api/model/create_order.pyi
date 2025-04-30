@@ -44,6 +44,33 @@ class CreateOrder(
             order_id = schemas.StrSchema
             order_total = schemas.Float64Schema
             cart_id = schemas.StrSchema
+            order_date = schemas.DateTimeSchema
+            
+            
+            class order_status(
+                schemas.EnumBase,
+                schemas.StrSchema
+            ):
+                
+                @schemas.classproperty
+                def CREATED(cls):
+                    return cls("created")
+                
+                @schemas.classproperty
+                def PENDING(cls):
+                    return cls("pending")
+                
+                @schemas.classproperty
+                def CANCELED(cls):
+                    return cls("canceled")
+                
+                @schemas.classproperty
+                def COMPLETED(cls):
+                    return cls("completed")
+                
+                @schemas.classproperty
+                def UNKNOWN(cls):
+                    return cls("unknown")
             
             
             class contact(
@@ -91,12 +118,12 @@ class CreateOrder(
                 class MetaOapg:
                     
                     @staticmethod
-                    def items() -> typing.Type['Product']:
-                        return Product
+                    def items() -> typing.Type['OrderProduct']:
+                        return OrderProduct
             
                 def __new__(
                     cls,
-                    arg: typing.Union[typing.Tuple['Product'], typing.List['Product']],
+                    arg: typing.Union[typing.Tuple['OrderProduct'], typing.List['OrderProduct']],
                     _configuration: typing.Optional[schemas.Configuration] = None,
                 ) -> 'products':
                     return super().__new__(
@@ -105,12 +132,14 @@ class CreateOrder(
                         _configuration=_configuration,
                     )
             
-                def __getitem__(self, i: int) -> 'Product':
+                def __getitem__(self, i: int) -> 'OrderProduct':
                     return super().__getitem__(i)
             __annotations__ = {
                 "order_id": order_id,
                 "order_total": order_total,
                 "cart_id": cart_id,
+                "order_date": order_date,
+                "order_status": order_status,
                 "contact": contact,
                 "products": products,
             }
@@ -127,6 +156,12 @@ class CreateOrder(
     def __getitem__(self, name: typing_extensions.Literal["cart_id"]) -> MetaOapg.properties.cart_id: ...
     
     @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["order_date"]) -> MetaOapg.properties.order_date: ...
+    
+    @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["order_status"]) -> MetaOapg.properties.order_status: ...
+    
+    @typing.overload
     def __getitem__(self, name: typing_extensions.Literal["contact"]) -> MetaOapg.properties.contact: ...
     
     @typing.overload
@@ -135,7 +170,7 @@ class CreateOrder(
     @typing.overload
     def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
     
-    def __getitem__(self, name: typing.Union[typing_extensions.Literal["order_id", "order_total", "cart_id", "contact", "products", ], str]):
+    def __getitem__(self, name: typing.Union[typing_extensions.Literal["order_id", "order_total", "cart_id", "order_date", "order_status", "contact", "products", ], str]):
         # dict_instance[name] accessor
         return super().__getitem__(name)
     
@@ -150,6 +185,12 @@ class CreateOrder(
     def get_item_oapg(self, name: typing_extensions.Literal["cart_id"]) -> typing.Union[MetaOapg.properties.cart_id, schemas.Unset]: ...
     
     @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["order_date"]) -> typing.Union[MetaOapg.properties.order_date, schemas.Unset]: ...
+    
+    @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["order_status"]) -> typing.Union[MetaOapg.properties.order_status, schemas.Unset]: ...
+    
+    @typing.overload
     def get_item_oapg(self, name: typing_extensions.Literal["contact"]) -> typing.Union[MetaOapg.properties.contact, schemas.Unset]: ...
     
     @typing.overload
@@ -158,7 +199,7 @@ class CreateOrder(
     @typing.overload
     def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
     
-    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["order_id", "order_total", "cart_id", "contact", "products", ], str]):
+    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["order_id", "order_total", "cart_id", "order_date", "order_status", "contact", "products", ], str]):
         return super().get_item_oapg(name)
     
 
@@ -168,6 +209,8 @@ class CreateOrder(
         order_id: typing.Union[MetaOapg.properties.order_id, str, ],
         order_total: typing.Union[MetaOapg.properties.order_total, decimal.Decimal, int, float, schemas.Unset] = schemas.unset,
         cart_id: typing.Union[MetaOapg.properties.cart_id, str, schemas.Unset] = schemas.unset,
+        order_date: typing.Union[MetaOapg.properties.order_date, str, datetime, schemas.Unset] = schemas.unset,
+        order_status: typing.Union[MetaOapg.properties.order_status, str, schemas.Unset] = schemas.unset,
         contact: typing.Union[MetaOapg.properties.contact, dict, frozendict.frozendict, schemas.Unset] = schemas.unset,
         products: typing.Union[MetaOapg.properties.products, list, tuple, schemas.Unset] = schemas.unset,
         _configuration: typing.Optional[schemas.Configuration] = None,
@@ -179,6 +222,8 @@ class CreateOrder(
             order_id=order_id,
             order_total=order_total,
             cart_id=cart_id,
+            order_date=order_date,
+            order_status=order_status,
             contact=contact,
             products=products,
             _configuration=_configuration,
@@ -186,4 +231,4 @@ class CreateOrder(
         )
 
 from egoi_api.model.contact_base_extra_full import ContactBaseExtraFull
-from egoi_api.model.product import Product
+from egoi_api.model.order_product import OrderProduct

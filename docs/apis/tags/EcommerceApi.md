@@ -512,9 +512,39 @@ with egoi_api.ApiClient(configuration) as api_client:
         order_total=1,
         order_id="100",
         cart_id="cart1",
+        order_date="1970-01-01T00:00:00.00Z",
+        order_status="unknown",
         contact=dict(),
         products=[
-            Product()
+            OrderProduct(
+                product_identifier="-",
+                catalog_id=Id(1),
+                name="Product name",
+                description="Product description",
+                sku="sku_example",
+                upc="upc_example",
+                ean="ean_example",
+                gtin="gtin_example",
+                mpn="mpn_example",
+                link="link_example",
+                image_link="image_link_example",
+                price=10,
+                sale_price=10,
+                brand="brand_example",
+                quantity=0,
+                categories=[
+                    "Clothing>Women>Blue Jeans"
+                ],
+                related_products=[
+                    "related_products_example"
+                ],
+                custom_attributes=[
+                    ProductCustomAttributes(
+                        alias="sale_price_5",
+                        value="15.45",
+                    )
+                ],
+            )
         ],
     )
     try:
@@ -2212,6 +2242,7 @@ with egoi_api.ApiClient(configuration) as api_client:
     body = ImportOrdersBulk([
         ImportOrdersBulkBulkRequest(
             order_id="100",
+            order_status="unknown",
             contact_id="customer@e-goi.com",
             revenue=100,
             store_url="https://www.e-goi.com",
